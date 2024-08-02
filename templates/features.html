@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>URL features</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #e4f1fb;
+      }
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      /* .center-text {
+                  text-align: center;
+                } */
+      .piechartContainer1 {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      #output {
+        font-size: 11px;
+      }
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      .card-subtitle {
+        font-size: 0.8rem;
+        /* text-align: center; */
+      }
+
+      #pieChart {
+        width: 190px;
+        margin-bottom: 5px;
+      }
+
+      .card-text ul,
+      li {
+        font-size: 0.9rem;
+      }
+      .small-text {
+        font-size: 0.9rem;
+      }
+      .fourthrowcontainer {
+        background-color: #fff;
+
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .fourthrowcontainer .card {
+        border-radius: 0;
+        box-shadow: none;
+        border: none;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">
+                  Features Used for Phishing Domain Detection
+                </h4>
+                <p class="card-text">
+                  There are many algorithms and a wide variety of data types
+                  used for phishing detection in academic literature and
+                  commercial products. A phishing URL and the corresponding page
+                  have several features that differentiate them from legitimate
+                  URLs.
+                </p>
+                <br />
+                For example, an attacker can register long and confusing domain
+                names to hide the actual domain name (Cybersquatting,
+                Typosquatting). In some cases, attackers can use direct IP
+                addresses instead of using the domain name.
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6 d-flex">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">URL-Based Features</h4>
+                <p class="card-text">
+                  URL analysis is the first step in determining whether a
+                  website is phishing or not. As mentioned before, URLs of
+                  phishing domains have some distinctive characteristics. Some
+                  of the URL-Based Features include:
+                </p>
+                <div class="card-text">
+                  <ul>
+                    <li>Digit count in the URL</li>
+                    <li>Total length of the URL</li>
+                    <li>
+                      Checking for typosquatting (e.g., google.com → goggle.com)
+                    </li>
+                    <li>
+                      Checking for the inclusion of legitimate brand names
+                      (e.g., apple-icloud-login.com)
+                    </li>
+                    <li>Number of subdomains in the URL</li>
+                    <li>Whether the Top-Level Domain (TLD) is commonly used</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Domain-Based Features</h4>
+                <p class="card-text">
+                  The purpose of phishing domain detection is to identify
+                  phishing domain names. Therefore, passive queries related to
+                  the domain name can provide useful information. Some useful
+                  Domain-Based Features include:
+                </p>
+                <div class="card-text">
+                  <ul>
+                    <li>
+                      Whether the domain name or its IP address appears in
+                      blacklists of well-known reputation services
+                    </li>
+                    <li>The number of days since the domain was registered</li>
+                    <li>Whether the registrant name is hidden</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-6 d-flex">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Page-Based Features</h4>
+                <p class="card-text">
+                  Page-Based Features utilize information about pages from
+                  reputation ranking services. Some of these features provide
+                  insights into the reliability of a website, such as:
+                </p>
+                <div class="card-text">
+                  <ul>
+                    <li>Global PageRank</li>
+                    <li>Country PageRank</li>
+                    <li>Position in the Alexa Top 1 Million Sites</li>
+                    <li>
+                      Other Page-Based Features provide information about user
+                      activity on the target site, including:
+                    </li>
+                    <ul>
+                      <li>
+                        Estimated number of visits for the domain on a daily,
+                        weekly, or monthly basis
+                      </li>
+                      <li>Average page views per visit</li>
+                      <li>Average visit duration</li>
+                      <li>Web traffic share per country</li>
+                      <li>
+                        Count of references from social networks to the given
+                        domain
+                      </li>
+                      <li>Domain category</li>
+                      <li>Similar websites</li>
+                    </ul>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 d-flex">
+            <div class="card">
+              <div class="card-body">
+                <h4 class="card-title">Content-Based Features</h4>
+                <p class="card-text">
+                  Obtaining these features requires an active scan of the target
+                  domain. Page contents are analyzed to detect whether the
+                  domain is used for phishing. Some processed information
+                  includes:
+                </p>
+                <div class="card-text">
+                  <ul>
+                    <li>Page Titles</li>
+                    <li>Meta Tags</li>
+                    <li>Hidden Text</li>
+                    <li>Text in the Body</li>
+                    <li>Images</li>
+                  </ul>
+                </div>
+                <div class="card-text">
+                  <ul class="list-unstyled">
+                    By analyzing this information, we can gather insights such
+                    as:
+                    <li>Whether login is required on the website</li>
+                    <li>Website category</li>
+                    <li>Information about the audience profile</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="fourthrowcontainer">
+          <div class="row">
+            <div class="col-md-8">
+              <div class="card">
+                <div class="card-body">
+                  <p class="card-text">
+                    On our site, we extract and use the features that appear in
+                    the pie chart displayed on the right. Page-based features
+                    like PageRank and whether the site is indexed play a crucial
+                    role in determining a site's legitimacy. Features like web
+                    traffic are also significant, but they are out of our scope
+                    and require multiple subscriptions to access through an API.
+                    We have selected and analyzed the features that are within
+                    our scope and assessed their importance to classify whether
+                    the inputted URL is a legitimate site or not.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="card">
+                <div class="card-body">
+                  <h4 class="card-title text-center">
+                    Features Analyzed and Their Importances
+                  </h4>
+                  <h6 class="card-subtitle mb-2 text-muted">
+                    (Below are the features analyzed in our application) Hover
+                    over the sections of the pie chart for feature descriptions
+                  </h6>
+                  <div class="piechartContainer1">
+                    <canvas id="pieChart"></canvas>
+                  </div>
+                  <div class="text-center" id="output"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+      const outputField = document.getElementById("output");
+      const data = {
+        nb_www: 0.15049408376216888,
+        nb_hyperlinks: 0.10373541712760925,
+        phish_hints: 0.09684891998767853,
+        ip: 0.07950299233198166,
+        length_words_raw: 0.06573906540870667,
+        longest_word_path: 0.050315987318754196,
+        ratio_digits_host: 0.04152495414018631,
+        domain_in_title: 0.04046408459544182,
+        nb_dots: 0.03375064954161644,
+        nb_hyphens: 0.03226355090737343,
+        nb_qm: 0.03103022091090679,
+        domain_age: 0.030695777386426926,
+        nb_underscore: 0.020431507378816605,
+        nb_slash: 0.015476280823349953,
+        nb_eq: 0.014665670692920685,
+        ratio_extHyperlinks: 0.01413238886743784,
+        ratio_digits_url: 0.013651836663484573,
+        nb_space: 0.013528482988476753,
+        longest_words_raw: 0.013142479583621025,
+        length_hostname: 0.011448560282588005,
+      };
+
+      const descriptions = {
+        nb_www: "The number of 'www' occurrences in the URL.",
+        nb_hyperlinks: "The number of hyperlinks on the webpage.",
+        phish_hints: "Presence of phishing hints in the URL or content.",
+        ip: "Whether the URL contains an IP address instead of a domain name.",
+        length_words_raw: "The length of words in the URL.",
+        longest_word_path: "Length of the longest word in the URL path.",
+        ratio_digits_host: "Ratio of digits in the host part of the URL.",
+        domain_in_title:
+          "Whether the domain name appears in the title of the page.",
+        nb_dots: "Number of dots in the URL.",
+        nb_hyphens: "Number of hyphens in the URL.",
+        nb_qm: "Number of question marks in the URL.",
+        domain_age: "Age of the domain in days.",
+        nb_underscore: "Number of underscores in the URL.",
+        nb_slash: "Number of slashes in the URL path.",
+        nb_eq: "Number of equal signs in the URL.",
+        ratio_extHyperlinks: "Ratio of external hyperlinks.",
+        ratio_digits_url: "Ratio of digits in the URL.",
+        nb_space: "Number of spaces in the URL or content.",
+        longest_words_raw: "Length of the longest word in the raw URL.",
+        length_hostname: "Length of the hostname.",
+      };
+
+      // Extract labels and values
+      const labels = Object.keys(data);
+      const values = Object.values(data);
+
+      // Create the pie chart
+      const ctx = document.getElementById("pieChart").getContext("2d");
+      const pieChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              data: values,
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#4BC0C0",
+                "#9966FF",
+                "#FF9F40",
+                "#FFCD56",
+                "#4B77BE",
+                "#E74C3C",
+                "#2ECC71",
+                "#E67E22",
+                "#BDC3C7",
+                "#F39C12",
+                "#D35400",
+                "#C0392B",
+                "#1ABC9C",
+                "#2C3E50",
+                "#E74C3C",
+                "#3498DB",
+                "#9B59B6",
+              ],
+              borderColor: "#fff",
+              borderWidth: 0.5,
+            },
+          ],
+        },
+        options: {
+          responsive: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.raw !== undefined) {
+                    label += `${(context.raw * 100).toFixed(2)}%`;
+                  }
+                  return label;
+                },
+                afterLabel: function (context) {
+                  const description = descriptions[context.label];
+                  outputField.textContent = description || "";
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

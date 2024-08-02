@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What is phishing?</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.5.1/chart.min.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #e4f1fb;
+      }
+      .card {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+      }
+      .card-body {
+        flex: 1;
+      }
+      .card-title {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+      .card-subtitle {
+        font-size: 0.8rem;
+      }
+      #pieChart {
+        width: 190px;
+        margin-bottom: 5px;
+      }
+      .card-text li {
+        font-size: 0.8rem;
+      }
+      .small-text {
+        font-size: 0.9rem;
+      }
+      .d-flex {
+        display: flex;
+      }
+      .h-100 {
+        height: 100%;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div class="py-5">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">What is phishing?</h4>
+                <p class="card-text">
+                  A Phishing website is a type of fraudulent site designed to
+                  deceive visitors into disclosing sensitive information, such
+                  as login credentials, financial details, or personal data.
+                  These sites mimic legitimate websites, such as banks, social
+                  media platforms, or online retailers, to trick users into
+                  believing they are interacting with a trusted entity.
+                </p>
+                <a href="/phishing_examples" class="card-link"
+                  >Click here for examples</a
+                >
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">URL - Uniform Resource Locator</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  URL is used to address web pages.
+                </h6>
+                <img class="card-img" src="static/item4.webp" />
+                <div class="card-text">
+                  <ul>
+                    <li>
+                      A domain name serves as the address of a website,
+                      identifying the server that hosts the web page.
+                    </li>
+                    <li>
+                      It consists of a registered second-level domain (e.g.,
+                      "exampleurl") and a top-level domain (e.g., ".com"). This
+                      part of the URL is regulated, as it must be registered
+                      with a domain name registrar.
+                    </li>
+                    <li>
+                      A hostname includes a subdomain (third-level domain, e.g.,
+                      "www") and the main domain name. The URL may also include
+                      path and file components.
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">
+                  Parts of a URL that a phisher can manipulate
+                </h4>
+                <p class="card-text">
+                  <strong>Phishers</strong> have complete control over the
+                  <strong>subdomain</strong> and can set it to any value. The
+                  phishers can also manipulate the <strong>file</strong> and
+                  <strong>path</strong> components. Both the subdomain and path
+                  are fully controllable by phishers (e.g.,
+                  "fake.example.com/path").
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <br />
+        <div class="row">
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Analyzing an example</h4>
+                <img class="card-img" src="static/eg3.webp" />
+                <p class="card-text small-text">
+                  Although the real domain name is active-userid.com, the
+                  attacker tried to make the domain look like paypal.com. When
+                  users see paypal.com at the beginning of the URL, they may
+                  trust the site and share their sensitive information to the
+                  this fraudulent site. This is a frequently used method by
+                  attackers.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Cybersquatting</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Registering "appleincorporation.com" with the intention of
+                  selling it to Apple Inc. for a profit.
+                </h6>
+                <p class="card-text">
+                  Cybersquatting refers to the practice of registering,
+                  trafficking in, or using a domain name with the intent to
+                  profit from the goodwill of a trademark belonging to someone
+                  else. The cybersquatter typically holds the domain name
+                  ransom, offering to sell it at an inflated price to the
+                  trademark owner or a third party.
+                </p>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-4 d-flex">
+            <div class="card h-100">
+              <div class="card-body">
+                <h4 class="card-title">Typosquatting</h4>
+                <h6 class="card-subtitle mb-2 text-muted">
+                  Registering "goggle.com" to trick users who accidentally type
+                  an extra "g" instead of "o" when trying to visit "google.com".
+                </h6>
+                <p class="card-text">
+                  Typosquatting, also known as URL hijacking, is a form of
+                  cybersquatting that involves registering domain names that are
+                  common misspellings or variations of well-known websites. The
+                  intent is to capitalize on typographical errors made by users
+                  when entering a website address into their browser.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      const outputField = document.getElementById("output");
+      const data = {
+        nb_www: 0.15049408376216888,
+        nb_hyperlinks: 0.10373541712760925,
+        phish_hints: 0.09684891998767853,
+        ip: 0.07950299233198166,
+        length_words_raw: 0.06573906540870667,
+        longest_word_path: 0.050315987318754196,
+        ratio_digits_host: 0.04152495414018631,
+        domain_in_title: 0.04046408459544182,
+        nb_dots: 0.03375064954161644,
+        nb_hyphens: 0.03226355090737343,
+        nb_qm: 0.03103022091090679,
+        domain_age: 0.030695777386426926,
+        nb_underscore: 0.020431507378816605,
+        nb_slash: 0.015476280823349953,
+        nb_eq: 0.014665670692920685,
+        ratio_extHyperlinks: 0.01413238886743784,
+        ratio_digits_url: 0.013651836663484573,
+        nb_space: 0.013528482988476753,
+        longest_words_raw: 0.013142479583621025,
+        length_hostname: 0.011448560282588005,
+      };
+
+      const descriptions = {
+        nb_www: "The number of 'www' occurrences in the URL.",
+        nb_hyperlinks: "The number of hyperlinks on the webpage.",
+        phish_hints: "Presence of phishing hints in the URL or content.",
+        ip: "Whether the URL contains an IP address instead of a domain name.",
+        length_words_raw: "The length of words in the URL.",
+        longest_word_path: "Length of the longest word in the URL path.",
+        ratio_digits_host: "Ratio of digits in the host part of the URL.",
+        domain_in_title:
+          "Whether the domain name appears in the title of the page.",
+        nb_dots: "Number of dots in the URL.",
+        nb_hyphens: "Number of hyphens in the URL.",
+        nb_qm: "Number of question marks in the URL.",
+        domain_age: "Age of the domain in days.",
+        nb_underscore: "Number of underscores in the URL.",
+        nb_slash: "Number of slashes in the URL path.",
+        nb_eq: "Number of equal signs in the URL.",
+        ratio_extHyperlinks: "Ratio of external hyperlinks.",
+        ratio_digits_url: "Ratio of digits in the URL.",
+        nb_space: "Number of spaces in the URL or content.",
+        longest_words_raw: "Length of the longest word in the raw URL.",
+        length_hostname: "Length of the hostname.",
+      };
+
+      // Extract labels and values
+      const labels = Object.keys(data);
+      const values = Object.values(data);
+
+      // Create the pie chart
+      const ctx = document.getElementById("pieChart").getContext("2d");
+      const pieChart = new Chart(ctx, {
+        type: "pie",
+        data: {
+          labels: labels,
+          datasets: [
+            {
+              data: values,
+              backgroundColor: [
+                "#FF6384",
+                "#36A2EB",
+                "#FFCE56",
+                "#4BC0C0",
+                "#9966FF",
+                "#FF9F40",
+                "#FFCD56",
+                "#4B77BE",
+                "#E74C3C",
+                "#2ECC71",
+                "#E67E22",
+                "#BDC3C7",
+                "#F39C12",
+                "#D35400",
+                "#C0392B",
+                "#1ABC9C",
+                "#2C3E50",
+                "#E74C3C",
+                "#3498DB",
+                "#9B59B6",
+              ],
+              borderColor: "#fff",
+              borderWidth: 0.5,
+            },
+          ],
+        },
+        options: {
+          responsive: false,
+          plugins: {
+            legend: {
+              display: false,
+            },
+            tooltip: {
+              callbacks: {
+                label: function (context) {
+                  let label = context.label || "";
+                  if (label) {
+                    label += ": ";
+                  }
+                  if (context.raw !== undefined) {
+                    label += `${(context.raw * 100).toFixed(2)}%`;
+                  }
+                  return label;
+                },
+                afterLabel: function (context) {
+                  const description = descriptions[context.label];
+                  outputField.textContent = description || "";
+                },
+              },
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

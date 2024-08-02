@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Result</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+      @import url("https://fonts.googleapis.com/css?family=Montserrat:400,600&display=swap");
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+        font-size: 16px;
+      }
+      body {
+        font-family: "Montserrat", sans-serif;
+        background-color: #e4f1fb;
+        color: #333;
+        text-align: center;
+        padding: 20px;
+      }
+      .result-container {
+        display: inline-block;
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      .barChartContainer {
+        background-color: #fff;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: flex-start;
+        gap: 40px;
+      }
+      .result-container1 {
+        display: inline-block;
+        background-color: #fff;
+        padding: 20px;
+        margin-bottom: 20px;
+        border-radius: 10px;
+      }
+      .item2 {
+        padding: 0px 4px 4px 4px;
+        background-color: #f5f9fc;
+        max-height: 340px;
+        overflow-y: auto;
+        margin-bottom: 25px;
+      }
+      .item3 {
+        display: flex;
+        flex-direction: column;
+      }
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        border-spacing: 10px;
+      }
+      thead th {
+        background-color: #53b0f7;
+        position: sticky;
+        top: 0;
+        z-index: 2;
+        color: #fff;
+        text-align: left;
+        padding: 12px;
+        font-weight: 600;
+      }
+      tbody tr {
+        background-color: #fff;
+        border: 1px solid #ffffff;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+      tbody tr:nth-child(even) {
+        background-color: #f9f9f9;
+      }
+      td {
+        padding: 12px;
+        text-align: left;
+        font-size: 14px;
+      }
+      td strong {
+        font-size: 14px;
+      }
+      .progress-bar {
+        height: 320px;
+      }
+      #progress {
+        margin: 20px auto;
+      }
+      .more-details a {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        color: #53b0f7;
+        text-decoration: none;
+        cursor: pointer;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-12">
+          <div class="result-container progress-bar">
+            <svg id="progress" width="200" height="200"></svg>
+            <p>It is a <span id="result">{{ result }}</span> site.</p>
+            <p>Probability: <span id="percentage">{{ percentage }}</span>%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <div class="row">
+        <div class="barChartContainer">
+          <div class="col-md-6">
+            <div class="result-container1">
+              <canvas id="barChart" width="600" height="400"></canvas>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="result-container1 item3">
+              <div class="item2">
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Features</th>
+                      <th>Description</th>
+                      <th>Legitimacy</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><strong>nb_www</strong></td>
+                      <td>The number of "www" occurrences in the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_hyperlinks</strong></td>
+                      <td>The number of hyperlinks on the webpage.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>phish_hints</strong></td>
+                      <td>Presence of phishing hints in the URL or content.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ip</strong></td>
+                      <td>
+                        Whether the URL contains an IP address instead of a
+                        domain name.
+                      </td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>length_words_raw</strong></td>
+                      <td>The length of words in the URL.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>longest_word_path</strong></td>
+                      <td>Length of the longest word in the URL path.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ratio_digits_host</strong></td>
+                      <td>Ratio of digits in the host part of the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>domain_in_title</strong></td>
+                      <td>
+                        Whether the domain name appears in the title of the
+                        page.
+                      </td>
+                      <td>High</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_dots</strong></td>
+                      <td>Number of dots in the URL.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_hyphens</strong></td>
+                      <td>Number of hyphens in the URL.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_qm</strong></td>
+                      <td>Number of question marks in the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>domain_age</strong></td>
+                      <td>Age of the domain in days.</td>
+                      <td>High</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_underscore</strong></td>
+                      <td>Number of underscores in the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_slash</strong></td>
+                      <td>Number of slashes in the URL path.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_eq</strong></td>
+                      <td>Number of equal signs in the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ratio_extHyperlinks</strong></td>
+                      <td>Ratio of external hyperlinks.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>ratio_digits_url</strong></td>
+                      <td>Ratio of digits in the URL.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>nb_space</strong></td>
+                      <td>Number of spaces in the URL or content.</td>
+                      <td>Low</td>
+                    </tr>
+                    <tr>
+                      <td><strong>longest_words_raw</strong></td>
+                      <td>Length of the longest word in the raw URL.</td>
+                      <td>Moderate</td>
+                    </tr>
+                    <tr>
+                      <td><strong>length_hostname</strong></td>
+                      <td>Length of the hostname.</td>
+                      <td>Moderate</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="more-details">
+                <a href="/guidelines">Click here for more details</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const percentage = parseInt(
+          document.getElementById("percentage").textContent
+        );
+
+        const result = document.getElementById("result").textContent;
+        const svg = document.getElementById("progress");
+        const size = 200;
+        const strokeWidth = 20;
+        const radius = (size - strokeWidth) / 2;
+        const circumference = 2 * Math.PI * radius;
+
+        const background = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
+        );
+
+        background.setAttribute("stroke", "#eee");
+        background.setAttribute("stroke-width", strokeWidth);
+        background.setAttribute("fill", "none");
+        background.setAttribute("r", radius);
+        background.setAttribute("cx", size / 2);
+        background.setAttribute("cy", size / 2);
+        svg.appendChild(background);
+
+        const progress = document.createElementNS(
+          "http://www.w3.org/2000/svg",
+          "circle"
+        );
+        progress.setAttribute(
+          "stroke",
+          result === "Phishing" ? "#dc3545" : "#28a745"
+        );
+        progress.setAttribute("stroke-width", strokeWidth);
+        progress.setAttribute("fill", "none");
+        progress.setAttribute("r", radius);
+        progress.setAttribute("cx", size / 2);
+        progress.setAttribute("cy", size / 2);
+        progress.setAttribute("stroke-dasharray", circumference);
+        progress.setAttribute("stroke-dashoffset", circumference);
+        progress.style.transition = "stroke-dashoffset 1s";
+        svg.appendChild(progress);
+
+        setTimeout(() => {
+          progress.setAttribute(
+            "stroke-dashoffset",
+            circumference - (percentage / 100) * circumference
+          );
+        }, 100);
+      });
+
+      document.addEventListener("DOMContentLoaded", function () {
+        const extractedFeatures = JSON.parse("{{ values | safe }}");
+
+        const idealValues = {
+          nb_www: 1,
+          nb_hyperlinks: 144,
+          phish_hints: 0,
+          ip: 0,
+          length_words_raw: 5,
+          longest_word_path: 5.65,
+          ratio_digits_host: 0,
+          domain_in_title: 1,
+          nb_dots: 2,
+          nb_hyphens: 1,
+          nb_qm: 0,
+          domain_age: 5093.938407699037,
+          nb_underscore: 0.2,
+          nb_slash: 4,
+          nb_eq: 0,
+          ratio_extHyperlinks: 0.25,
+          ratio_digits_url: 0.021,
+          nb_space: 0,
+          longest_words_raw: 11,
+          length_hostname: 18.5,
+        };
+
+        // Indications for legitimacy (1 for high is legitimate, -1 for low is legitimate)
+        const legitimacyIndications = {
+          nb_www: -1,
+          nb_hyperlinks: 1,
+          phish_hints: -1,
+          ip: -1,
+          length_words_raw: 1,
+          longest_word_path: 1,
+          ratio_digits_host: -1,
+          domain_in_title: 1,
+          nb_dots: -1,
+          nb_hyphens: -1,
+          nb_qm: -1,
+          domain_age: 1,
+          nb_underscore: -1,
+          nb_slash: -1,
+          nb_eq: -1,
+          ratio_extHyperlinks: -1,
+          ratio_digits_url: -1,
+          nb_space: -1,
+          longest_words_raw: 1,
+          length_hostname: 1,
+        };
+
+        const featureLabels = Object.keys(idealValues);
+        const idealValuesArray = Object.values(idealValues);
+
+        const differences = extractedFeatures.map((value, index) => {
+          const feature = featureLabels[index];
+          const idealValue = idealValuesArray[index];
+          const legitimacyIndication = legitimacyIndications[feature];
+          const difference = value - idealValue;
+          return difference * legitimacyIndication;
+        });
+
+        const colors = differences.map((diff) => (diff > 0 ? "green" : "red"));
+
+        const barCtx = document.getElementById("barChart").getContext("2d");
+        const barChart = new Chart(barCtx, {
+          type: "bar",
+          data: {
+            labels: featureLabels,
+            datasets: [
+              {
+                label: "Difference between Extracted and Ideal Values",
+                data: differences,
+                backgroundColor: colors,
+              },
+            ],
+          },
+          options: {
+            responsive: true,
+            scales: {
+              x: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Features",
+                },
+              },
+              y: {
+                beginAtZero: true,
+                title: {
+                  display: true,
+                  text: "Difference",
+                },
+              },
+            },
+            plugins: {
+              legend: {
+                display: true,
+                labels: {
+                  generateLabels: function (chart) {
+                    return [
+                      {
+                        text: "- Legitimacy Indicator (Green)",
+                        fillStyle: "green",
+                      },
+                      {
+                        text: "- Phishing Indicator (Red)",
+                        fillStyle: "red",
+                      },
+                    ];
+                  },
+                },
+              },
+              tooltip: {
+                callbacks: {
+                  label: function (context) {
+                    let label = context.dataset.label || "";
+                    if (label) {
+                      label += ": ";
+                    }
+                    if (context.raw !== undefined) {
+                      label += context.raw.toFixed(2);
+                    }
+                    return label;
+                  },
+                },
+              },
+            },
+          },
+        });
+      });
+    </script>
+  </body>
+</html>
